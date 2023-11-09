@@ -14,31 +14,20 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late AnimationController slideAnimationController;
   late Animation<Offset> slideAnimation;
-  late AnimationController fadeAnimationController;
-  late Animation<double> fadeAnimation;
+  bool isShowLodaingText = false;
 
   @override
   void initState() {
     super.initState();
     mySlideAnimation();
-    myFadeAnimation();
-    Timer(const Duration(seconds: 8), () {
-      Navigator.pushReplacementNamed(context, 'login');
-    });
-  }
-
-  void myFadeAnimation() {
-    fadeAnimationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..forward();
-    fadeAnimation = Tween<double>(
-      begin: -1,
-      end: 1,
-    ).animate(fadeAnimationController);
+    Timer(
+        const Duration(milliseconds: 2750),
+        () => setState(() {
+              isShowLodaingText = true;
+            }));
   }
 
   void mySlideAnimation() {
@@ -56,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void dispose() {
     slideAnimationController.dispose();
-    fadeAnimationController.dispose();
+
     super.dispose();
   }
 
@@ -81,40 +70,29 @@ class _SplashScreenState extends State<SplashScreen>
             ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.4),
-          FadeTransition(
-            opacity: fadeAnimation,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Loading',
-                    style: TextStyle(
-                      fontSize: 32,
-                      color: AppColors.myAccentColor,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Nunito'
-                    ),
-                  ),
-                  DefaultTextStyle(
+          isShowLodaingText
+              ? Center(
+                  child: DefaultTextStyle(
                     style: const TextStyle(
                       fontSize: 30,
                       color: AppColors.myAccentColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Nunito',
                     ),
                     child: AnimatedTextKit(
-                      totalRepeatCount: 6,
+                      onFinished: () =>
+                          Navigator.pushReplacementNamed(context, 'login'),
+                      totalRepeatCount: 2,
                       animatedTexts: [
-                        WavyAnimatedText(
-                          ' ...',
-                          speed: const Duration(milliseconds: 500),
+                        TyperAnimatedText(
+                          'Loading ...',
+                          speed: const Duration(milliseconds: 250),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
+                )
+              : Container(),
         ],
       ),
     );

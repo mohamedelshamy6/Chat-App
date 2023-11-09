@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../presentation layer/screens/auth_screens/login.dart';
-import '../presentation%20layer/screens/splash_screen/splash_screen.dart';
+import '../presentation_layer/screens/auth_screens/login.dart';
+import '../presentation_layer/screens/splash_screen/splash_screen.dart';
 
 class CustomPageRoute extends MaterialPageRoute {
   @override
-  Duration get transitionDuration => const Duration(milliseconds: 4000);
+  Duration get transitionDuration => const Duration(milliseconds: 3000);
 
   CustomPageRoute({builder}) : super(builder: builder);
 }
