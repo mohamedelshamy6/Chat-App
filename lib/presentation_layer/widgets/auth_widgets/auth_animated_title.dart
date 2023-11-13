@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import '../../../constants/app_colors.dart';
 
 class MyAnimatedTitle extends StatefulWidget {
-  const MyAnimatedTitle({super.key});
+  final String firstTitle;
+  final String secondTitle;
+  const MyAnimatedTitle(
+      {super.key, required this.firstTitle, required this.secondTitle});
 
   @override
   State<MyAnimatedTitle> createState() => _MyAnimatedTitleState();
@@ -17,7 +20,7 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
       secondFadeAnimationController;
 
   late Animation<double> firstFadeAnimation, secondFadeAnimation;
-  bool isShowLoginText = false;
+  bool isShowWelcomeText = false;
   @override
   void initState() {
     super.initState();
@@ -25,7 +28,7 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
 
     Timer(const Duration(milliseconds: 4000), () {
       setState(() {
-        isShowLoginText = true;
+        isShowWelcomeText = true;
       });
       mySecondFadeAnimation();
     });
@@ -68,13 +71,13 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
 
   @override
   Widget build(BuildContext context) {
-    return !isShowLoginText
+    return !isShowWelcomeText
         ? FadeTransition(
             opacity: firstFadeAnimation,
-            child: const Text(
-              'Welcome to Chaty',
+            child: Text(
+              widget.firstTitle,
               textAlign: TextAlign.start,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Nunito',
                 fontSize: 34,
                 color: AppColors.myAccentColor,
@@ -84,10 +87,10 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
           )
         : FadeTransition(
             opacity: secondFadeAnimation,
-            child: const Text(
-              'Login',
+            child: Text(
+              widget.secondTitle,
               textAlign: TextAlign.start,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Nunito',
                 fontSize: 34,
                 color: AppColors.myAccentColor,

@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen>
     )..forward();
     slideAnimation = Tween<Offset>(
       begin: const Offset(0.5, -1),
-      end: const Offset(0.4, 1.2),
+      end: const Offset(0.5, 1.2),
     ).animate(CurvedAnimation(
         parent: slideAnimationController, curve: Curves.bounceOut));
   }
@@ -59,7 +59,7 @@ class _SplashScreenState extends State<SplashScreen>
           SlideTransition(
             position: slideAnimation,
             child: SizedBox(
-              height: MediaQuery.of(context).size.height / 4,
+              height: MediaQuery.of(context).size.height / 4.5,
               child: Hero(
                 tag: 'appLogo',
                 child: Image.asset(
@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.4),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.35),
           isShowLodaingText
               ? Center(
                   child: DefaultTextStyle(
@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen>
                     ),
                     child: AnimatedTextKit(
                       onFinished: () =>
-                          Navigator.pushReplacementNamed(context, 'login'),
+                          Navigator.pushReplacementNamed(context, 'authBody'),
                       totalRepeatCount: 2,
                       animatedTexts: [
                         TyperAnimatedText(

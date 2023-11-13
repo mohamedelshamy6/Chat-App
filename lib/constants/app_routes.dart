@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../presentation_layer/screens/auth_screens/auth_body.dart';
 import '../presentation_layer/screens/auth_screens/login.dart';
+import '../presentation_layer/screens/auth_screens/signup.dart';
 import '../presentation_layer/screens/splash_screen/splash_screen.dart';
 
 class CustomPageRoute extends MaterialPageRoute {
@@ -13,6 +15,8 @@ class CustomPageRoute extends MaterialPageRoute {
 class AppRoutes {
   static const String splashScreen = '/';
   static const String login = 'login';
+  static const String signUp = 'signUp';
+  static const String authBody = 'authBody';
 
   Route? generateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -20,8 +24,16 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const SplashScreen(),
         );
-      case login:
+      case authBody:
         return CustomPageRoute(
+          builder: (context) => const AuthBody(),
+        );
+      case signUp:
+        return MaterialPageRoute(
+          builder: (context) => const SignUp(),
+        );
+      case login:
+        return MaterialPageRoute(
           builder: (context) => const Login(),
         );
     }
