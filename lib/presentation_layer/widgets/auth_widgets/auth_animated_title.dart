@@ -25,12 +25,11 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
   void initState() {
     super.initState();
     myFirstFadeAnimation();
-
+    mySecondFadeAnimation();
     Timer(const Duration(milliseconds: 4000), () {
       setState(() {
         isShowWelcomeText = true;
       });
-      mySecondFadeAnimation();
     });
   }
 
@@ -51,10 +50,10 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
   void mySecondFadeAnimation() {
     secondFadeAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 8000),
     )..forward();
     secondFadeAnimation = Tween<double>(
-      begin: 0,
+      begin: -.5,
       end: 1,
     ).animate(
       CurvedAnimation(

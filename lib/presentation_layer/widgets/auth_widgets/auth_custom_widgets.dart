@@ -66,15 +66,15 @@ class AuthButton extends StatelessWidget {
 
 class CheckAccountRow extends StatelessWidget {
   final String question, action;
+  final Function() checkAccount;
   const CheckAccountRow({
     super.key,
     required this.question,
-    required this.action,
+    required this.action, required this.checkAccount,
   });
 
   @override
   Widget build(BuildContext context) {
-    var handler = BlocProvider.of<AuthCardAnimationCubit>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -88,11 +88,7 @@ class CheckAccountRow extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () {
-            action != 'Login'
-                ? handler.showSignupCard()
-                : handler.showLoginCard();
-          },
+          onPressed: ()=>checkAccount,
           style: ButtonStyle(
             padding: MaterialStateProperty.all(
               EdgeInsets.zero,

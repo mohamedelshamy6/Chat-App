@@ -85,9 +85,12 @@ class Login extends StatelessWidget {
                           title: 'Login',
                         ),
                         SizedBox(height: mediaQueryHeight * 0.010),
-                        const CheckAccountRow(
+                        CheckAccountRow(
                           question: 'Don\'t have an account ?',
                           action: 'Sign Up',
+                          checkAccount:
+                              BlocProvider.of<AuthCardAnimationCubit>(context)
+                                  .showLoginCard,
                         ),
                       ],
                     ),
