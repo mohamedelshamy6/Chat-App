@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../constants/app_colors.dart';
-import '../../../logic_layer/cubit/auth_cubit/auth_card_animation_cubit.dart';
 
 class TFFLabel extends StatelessWidget {
   final String label;
@@ -70,7 +68,8 @@ class CheckAccountRow extends StatelessWidget {
   const CheckAccountRow({
     super.key,
     required this.question,
-    required this.action, required this.checkAccount,
+    required this.action,
+    required this.checkAccount,
   });
 
   @override
@@ -88,7 +87,7 @@ class CheckAccountRow extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: ()=>checkAccount,
+          onPressed: () => checkAccount,
           style: ButtonStyle(
             padding: MaterialStateProperty.all(
               EdgeInsets.zero,
