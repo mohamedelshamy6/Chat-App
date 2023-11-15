@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../presentation_layer/screens/auth_screens/auth_body.dart';
-import '../presentation_layer/screens/auth_screens/login.dart';
-import '../presentation_layer/screens/auth_screens/signup.dart';
 import '../presentation_layer/screens/splash_screen/splash_screen.dart';
 
 class CustomPageRoute extends MaterialPageRoute {
@@ -27,14 +25,6 @@ class AppRoutes {
       case authBody:
         return CustomPageRoute(
           builder: (context) => const AuthBody(),
-        );
-      case signUp:
-        return MaterialPageRoute(
-          builder: (context) => const SignUp(),
-        );
-      case login:
-        return MaterialPageRoute(
-          builder: (context) => const Login(),
         );
     }
     return null;

@@ -4,4 +4,6 @@ part of 'auth_card_animation_cubit.dart';
 sealed class AuthCardAnimationState {}
 
 final class AuthCardAnimationInitial extends AuthCardAnimationState {}
-final class AuthCardAnimationSuccessState extends AuthCardAnimationState {}
+
+final class LoginCardState extends AuthCardAnimationState {}
+final class SignUpCardState extends AuthCardAnimationState {}

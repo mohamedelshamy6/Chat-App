@@ -21,12 +21,13 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
 
   late Animation<double> firstFadeAnimation, secondFadeAnimation;
   bool isShowWelcomeText = false;
+  Timer? timer;
   @override
   void initState() {
     super.initState();
     myFirstFadeAnimation();
     mySecondFadeAnimation();
-    Timer(const Duration(milliseconds: 4000), () {
+    timer = Timer(const Duration(milliseconds: 3500), () {
       setState(() {
         isShowWelcomeText = true;
       });
@@ -36,7 +37,7 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
   void myFirstFadeAnimation() {
     firstFadeAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 4000),
+      duration: const Duration(milliseconds: 3500),
     )..forward();
     firstFadeAnimation = Tween<double>(
       begin: 1,
@@ -50,7 +51,7 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
   void mySecondFadeAnimation() {
     secondFadeAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 8000),
+      duration: const Duration(milliseconds: 6000),
     )..forward();
     secondFadeAnimation = Tween<double>(
       begin: -.5,
@@ -65,6 +66,7 @@ class _MyAnimatedTitleState extends State<MyAnimatedTitle>
   void dispose() {
     firstFadeAnimationController.dispose();
     secondFadeAnimationController.dispose();
+    timer!.cancel();
     super.dispose();
   }
 

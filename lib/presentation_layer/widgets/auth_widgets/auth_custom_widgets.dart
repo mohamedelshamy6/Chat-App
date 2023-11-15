@@ -87,19 +87,21 @@ class CheckAccountRow extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () => checkAccount,
+          onPressed:checkAccount,
           style: ButtonStyle(
             padding: MaterialStateProperty.all(
               EdgeInsets.zero,
             ),
           ),
-          child: Text(
-            action,
-            style: const TextStyle(
-              fontFamily: 'Nunito',
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: AppColors.myAccentColor,
+          child: Expanded(
+            child: Text(
+              action,
+              style: const TextStyle(
+                fontFamily: 'Nunito',
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: AppColors.myAccentColor,
+              ),
             ),
           ),
         ),
@@ -197,9 +199,9 @@ class MediaAuthRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             MediaLoginCard(
-                icon: FontAwesomeIcons.facebook,
+                icon: FontAwesomeIcons.facebookF,
                 mediaQueryHeight: mediaQueryHeight,
-                mediaQueryWidth: mediaQueryWidth),
+                mediaQueryWidth: mediaQueryWidth,),
             MediaLoginCard(
               mediaQueryHeight: mediaQueryHeight,
               mediaQueryWidth: mediaQueryWidth,
